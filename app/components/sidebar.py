@@ -8,23 +8,10 @@ def render_sidebar():
 
         st.markdown(
             """
-            <div class="sidebar-container">
-
-                <div class="sidebar-logo">
-                    🎮
-                </div>
-
-                <div class="sidebar-title">
-                    GameBot AI
-                </div>
-
-                <div class="sidebar-subtitle">
-                    Intelligent Game Recommendation Assistant
-                </div>
-
-            </div>
-            """,
-            unsafe_allow_html=True
+            # 🎮 GameBot AI
+            
+            ### Intelligent Game Recommendation Assistant
+            """
         )
 
         st.markdown("---")
@@ -35,50 +22,29 @@ def render_sidebar():
 
         st.markdown(
             """
-            <div class="sidebar-section">
-
-                <div class="sidebar-heading">
-                    ⚡ Features
-                </div>
-
-                <ul class="feature-list">
-                    <li>AI Recommendations</li>
-                    <li>Smart Mood Detection</li>
-                    <li>Genre Matching</li>
-                    <li>Conversation-Based Suggestions</li>
-                    <li>Game Discovery Dashboard</li>
-                </ul>
-
-            </div>
-            """,
-            unsafe_allow_html=True
+            ## ⚡ Features
+            
+            - AI Recommendations
+            - Smart Mood Detection
+            - Genre Matching
+            - Conversation-Based Suggestions
+            - Game Discovery Dashboard
+            """
         )
 
         st.markdown("---")
 
         st.markdown(
             """
-            <div class="sidebar-section">
-
-                <div class="sidebar-heading">
-                    🧠 Recommendation Engine
-                </div>
-
-                <div class="sidebar-text">
-                    Hybrid AI recommendation system using:
-                    <br><br>
-                    • NLP understanding
-                    <br>
-                    • Preference scoring
-                    <br>
-                    • Mood analysis
-                    <br>
-                    • Genre intelligence
-                </div>
-
-            </div>
-            """,
-            unsafe_allow_html=True
+            ## 🧠 Recommendation Engine
+            
+            Hybrid AI recommendation system using:
+            
+            - NLP understanding
+            - Preference scoring
+            - Mood analysis
+            - Genre intelligence
+            """
         )
 
     return filters

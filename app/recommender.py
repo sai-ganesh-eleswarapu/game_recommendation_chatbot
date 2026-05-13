@@ -1,45 +1,24 @@
-from app.data import games_data
+from premium_games import premium_games
 
 
 def recommend_games(user_input):
+
     user_input = user_input.lower()
 
-    recommendations = []
+    matched_games = []
 
-    for game in games_data:
-        score = 0
+    for category, games in premium_games.items():
 
-        for genre in game["genre"]:
-            if genre.lower() in user_input:
-                score += 5
+        category_name = category.replace("_", " ")
 
-        for mood in game["mood"]:
-            if mood.lower() in user_input:
-                score += 4
+        if category_name in user_input:
 
-        for tag in game["tags"]:
-            if tag.lower() in user_input:
-                score += 3
+            matched_games.extend(games)
 
-        if "friends" in user_input or "multiplayer" in user_input:
-            if game["mode"] == "Multiplayer":
-                score += 5
+    if not matched_games:
 
-        if "story" in user_input:
-            if "Story Rich" in game["tags"]:
-                score += 5
+        matched_games = premium_games["open_world"]
 
-        if "mobile" in user_input:
-            if "Mobile" in game["platform"]:
-                score += 5
+    unique_games = list(dict.fromkeys(matched_games))
 
-        if "pc" in user_input:
-            if "PC" in game["platform"]:
-                score += 5
-
-        if score > 0:
-            recommendations.append((score, game))
-
-    recommendations.sort(reverse=True, key=lambda x: x[0])
-
-    return [game for score, game in recommendations[:6]]
+    return unique_games[:6]
