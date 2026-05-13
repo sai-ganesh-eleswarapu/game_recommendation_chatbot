@@ -1,6 +1,42 @@
-.env
+# Virtual Environment
 venv/
+.venv/
+
+# Python Cache
 __pycache__/
 *.pyc
-.pkl
-.DS_Store   
+*.pyo
+*.pyd
+
+# Environment Variables
+.env
+
+# Streamlit Cache
+.streamlit/
+
+# VS Code
+.vscode/
+
+# Mac Files
+.DS_Store
+
+# Logs
+*.log
+
+# Jupyter
+.ipynb_checkpoints/
+
+# API Keys / Secrets
+config/secrets.toml
+
+# Temporary Files
+temp/
+tmp/
+
+# Build Files
+dist/
+build/
+
+# Coverage Reports
+.coverage
+htmlcov/

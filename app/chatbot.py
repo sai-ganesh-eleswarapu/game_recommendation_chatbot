@@ -1,20 +1,27 @@
+import google.generativeai as genai
+from config.settings import GEMINI_API_KEY
 
-from statistics import mode
+
+genai.configure(api_key=GEMINI_API_KEY)
+
+model = genai.GenerativeModel("gemini-1.5-flash")
 
 
-def get_ai_recommendation(genre, platform, mode):
-    if genre == "Action":
-        games = ["Call of Duty", "GTA V", "Apex Legends"]
-    elif genre == "Adventure":
-        games = ["Zelda", "Uncharted", "Tomb Raider"]
-    elif genre == "Sports":
-        games = ["FIFA", "NBA 2K", "WWE 2K"]
-    else:
-        games = ["Civilization VI", "Age of Empires", "Clash of Clans"]
+def generate_ai_response(user_input, recommended_games):
+    game_names = ", ".join([game["name"] for game in recommended_games])
 
-    response = "🎮 Here are your recommendations:\n\n"
+    prompt = f"""
+    User input: {user_input}
 
-    for i, game in enumerate(games, 1):
-        response += f"{i}. {game} - Perfect for {genre} lovers on {platform} ({mode}) mode.\n"
+    Recommended games: {game_names}
 
-    return response
+    Act like a professional gaming recommendation assistant.
+
+    Explain naturally and conversationally why these games match the user's preferences.
+
+    Keep response concise, friendly, and modern.
+    """
+
+    response = model.generate_content(prompt)
+
+    return response.text
